@@ -2,6 +2,17 @@
 
 ![](./imgs/output3.png)
 
+1. [Intorduction](##-Introduction)
+1. [Shortest Path Problem](##-Shortest-Path-Problem)
+1. [Bellman-Ford Algorithm](##-Bellman-Ford-Algorithm)
+1. [Implementation](##-Implementation)
+1. [Usage on Uniswap V3](##-Usage-Uniswap-V3)
+1. [Results](##-Results)
+1. [Complexity](##-Complexity)
+1. [POC](##-POC)
+1. [Improvements](##-Improvements)
+1. [Resources Readings](##-Resources-Readings)
+
 ## Introduction
 
 This repository contains analysis of Defi Arbitration as a Shortest Path Problem. The motivation is based on the paper [On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols](https://arxiv.org/pdf/2103.02228).
