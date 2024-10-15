@@ -19,8 +19,6 @@ The arbitration model is based on the following:
 3. Each edge `(u, v)` has a weight `w(u, v)` which is the exchange rate from token `u` to token `v`.
 4. The goal is to find a path from a source vertex `s` to a destination vertex `t` such that the product of the weights of the edges in the path is greater than 1.
 
-> The arbritation model is based on finding the sum of the product of exchange rates that is greater than 1. This is equivalent to finding the sum of the log of the exchange rates that is greater than 0.
-
 **Pre-requisite**
 
 |     | usd   | eur   | gbp   | chf   | cad   |
@@ -30,6 +28,8 @@ The arbitration model is based on the following:
 | gbp | 1.521 | 1.126 | 1     | 1.614 | 1.538 |
 | chf | 0.942 | 0.698 | 0.619 | 1     | 0.953 |
 | cad | 0.995 | 0.732 | 0.650 |       | 1     |
+
+> The arbritation model is based on finding the sum of the product of exchange rates that is greater than 1. This is equivalent to finding the sum of the log of the exchange rates that is greater than 0.
 
 **Abritrage path with product sum**
 
