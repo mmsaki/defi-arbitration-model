@@ -29,7 +29,7 @@ The arbitration model is based on the following:
 | chf | 0.942 | 0.698 | 0.619 | 1     | 0.953 |
 | cad | 0.995 | 0.732 | 0.650 |       | 1     |
 
-> The arbritation model is based on finding the sum of the product of exchange rates that is greater than 1. This is equivalent to finding the sum of the log of the exchange rates that is greater than 0.
+> The arbritation model is based on finding the product summation of exchange rates that is greater than 1. This is equivalent to finding the sum of the log of the exchange rates that is greater than 0.
 
 **Abritrage path with product sum**
 
