@@ -1,18 +1,14 @@
-# Abritration in Defi as a Shortest Path Problem
+# Defi Arbitration Model
 
 ## Introduction
 
 This repository contains analysis of Defi Arbitration as a Shortest Path Problem. The analysis is based on the paper [On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols](https://arxiv.org/pdf/2103.02228).
-
-## Arbitration in Defi
 
 The main idea of arbitrage in Defi is to find a path of transaction that can generate profit. We are going to make the following assumptions:
 
 1. Profit is meansured in terms of the amount of the base currency that can be obtained.
 2. The transaction is done in a single block.
 3. After the transaction, you are left with more base currency than you started with.
-
-## Arbitration Model
 
 The arbitration model is based on the following:
 
@@ -23,7 +19,7 @@ The arbitration model is based on the following:
 
 > The arbritation model is based on finding the sum of the product of exchange rates that is greater than 1. This is equivalent to finding the sum of the log of the exchange rates that is greater than 0.
 
-**Arbitrage pre-requisite example**
+**Pre-requisite**
 
 |     | usd   | eur   | gbp   | chf   | cad   |
 | --- | ----- | ----- | ----- | ----- | ----- |
