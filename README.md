@@ -51,9 +51,9 @@ $10000 \cdot 10^{0.0039} = 10071$
 
 $log (a) = 0$ if $a = 1$
 
-$log (a) > 0$ if $a > 1$
+$log (a) > 0$ if $a > 1$, positive weight
 
-$log (a) < 0$ if $a < 1$
+$log (a) < 0$ if $a < 1$, negative weight
 
 $\log (a \cdot b) = \log (a) + \log (b)$
 
