@@ -2,16 +2,16 @@
 
 ![](./imgs/output3.png)
 
-1. [Intorduction](##-Introduction)
-1. [Shortest Path Problem](##-Shortest-Path-Problem)
-1. [Bellman-Ford Algorithm](##-Bellman-Ford-Algorithm)
-1. [Implementation](##-Implementation)
-1. [Usage on Uniswap V3](##-Usage-Uniswap-V3)
-1. [Results](##-Results)
-1. [Complexity](##-Complexity)
-1. [POC](##-POC)
-1. [Improvements](##-Improvements)
-1. [Resources Readings](##-Resources-Readings)
+1. [Intorduction](##Introduction)
+1. [Shortest Path Problem](##Shortest-Path-Problem)
+1. [Bellman-Ford Algorithm](##Bellman-Ford-Algorithm)
+1. [Implementation](##Implementation)
+1. [Usage on Uniswap V3](##Usage-Uniswap-V3)
+1. [Results](##Results)
+1. [Complexity](##Complexity)
+1. [POC](##POC)
+1. [Improvements](##Improvements)
+1. [Resources Readings](##Resources-Readings)
 
 ## Introduction
 
