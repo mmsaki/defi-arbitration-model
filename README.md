@@ -47,7 +47,7 @@ $\log(0.741) + log(1.366) + log(0.995) = 0.00309$
 
 $10000 \cdot 10^{0.0039} = 10071$
 
-> I just wanted to show the equivalence of the two methods. For the sake of the reader I only reference some log properties below but will not go further into the math, read resources materials for detailed on the Arbritration problem.
+> I just wanted to show the equivalence of the two methods. For the sake of the reader I only reference some log properties below but will not go further into the math, read [resources materials](#resources-readings) for detailed on the Arbritration problem.
 
 $log (a) = 0$ if $a = 1$
 
@@ -137,11 +137,11 @@ forge test -vvv --match-contract=testPoC
 
 ## Resources Readings
 
-**One Defi Makert Arbitration**
+**Defi Makert Arbitration**
 
 - [On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols, 2021](https://arxiv.org/pdf/2103.02228)
 
-**On General Financial Arbitrage**
+**General Financial Arbitrage**
 
 - [Shortest Paths Arbitrage](https://www.thealgorists.com/Algo/ShortestPaths/Arbitrage)
 - [Arbitrage as a Shortest Path Problem](https://blog.skz.dev/arbitrage-as-a-shortest-path-problem)
