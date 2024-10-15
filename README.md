@@ -106,6 +106,24 @@ However, the complexity of the Defi Arbitration model is dependent on the AMM pr
 
 The Proof of Concept (POC) is implemented in Python. The implementation is based on the Bellman-Ford algorithm. The POC can be found in the `arb.ipynb` notebook.
 
+**Python**
+
+1. Install the required packages
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+1. Add `api_key` to `.env` file, see [thegrah](https://thegraph.com/) for more information
+
+   ```bash
+   cp .env.example .env
+   ```
+
+1. Open the [`arb.ipynb`](./arb.ipynb) notebook and run the cells
+
 **Foundry**
 
 Tests are implemented in the `tests` directory. The tests can be run using the following command:
