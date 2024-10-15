@@ -1,8 +1,10 @@
 # Defi Arbitration Model
 
+![](./imgs/output3.png)
+
 ## Introduction
 
-This repository contains analysis of Defi Arbitration as a Shortest Path Problem. The analysis is based on the paper [On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols](https://arxiv.org/pdf/2103.02228).
+This repository contains analysis of Defi Arbitration as a Shortest Path Problem. The motivation is based on the paper [On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols](https://arxiv.org/pdf/2103.02228).
 
 The main idea of arbitrage in Defi is to find a path of transaction that can generate profit. We are going to make the following assumptions:
 
@@ -125,9 +127,9 @@ forge test -vvv --match-contract=testPoC
 
 1. **Node Complexity**: the Arbitration model can be improved by reducing the complexity of the Defi protocol graph with different feeTiers and liquidity pools. Since Uniswap V4 has dymanic feeTiers for liquidity pools we will need to use a simpler graph representation for ERC20 token pairs and update our weight function to include the feeTier.
 
-> Currently with 1000 Uniswap V3 pools our graph looks like this. The center is WETH 3000 feeTier as the most used token pair in V3. The graph is too complex to visualize and the cycles are hard to find. We need to simplify the graph representation or prune unecessary nodes.
+   > Currently with 1000 Uniswap V3 pools our graph looks like this. The center is WETH 3000 feeTier as the most used token pair in V3. The graph is too complex to visualize and the cycles are hard to find. We need to simplify the graph representation or prune unecessary nodes.
 
-![](./imgs/output6.png)
+   ![](./imgs/output6.png)
 
 1. **Transaction Execution**: The Arbitration model can be improved by automating executing the transaction on the Defi protocol by generating transaction parameterss
 
