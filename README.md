@@ -78,7 +78,7 @@ Additionally, our problem is constrained by the fact that the starting and endin
 
 ## Bellman-Ford Algorithm
 
-The Bellman-Ford algorithm is used to find the shortest path from a source vertex `s` to all other vertices in the graph. The algorithm works by relaxing the edges of the graph `|V| - 1` times. If there is a negative cycle in the graph, the algorithm will detect it. The Bellman-Ford algorithm has a time complexity of `O(|V| * |E|)`.
+The Bellman-Ford algorithm is used to find the shortest path from a source vertex `s` to all other vertices in the graph. The algorithm works by relaxing the edges of the graph `|V| - 1` times. If there is a negative cycle in the graph, the algorithm will detect it. The Bellman-Ford algorithm has a time complexity of `O(|N^2| * |E|)`.
 
 In the context of Defi Arbitraction, we are only interested in token sswapping paths that generates profit, i.e., the negative cycle. We can use the Bellman-Ford algorithm to find the negative cycle in the graph. If there is a negative cycle in the graph, we have found a path that generates arbitrage profit.
 
