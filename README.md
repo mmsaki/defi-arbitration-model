@@ -109,7 +109,7 @@ To run the implementation, we can use Uniswap V3 protocol as an example. The fol
 
 ## Complexity
 
-Defi Arbitration as a Shortest Path Problem has a time complexity of `O(|V| * |E|)` which is the same as the Bellman-Ford algorithm. The space complexity is `O(|V|)`.
+Defi Arbitration as a Shortest Path Problem has a time complexity of `O(|N^2| * |E|)` which is the same as the Bellman-Ford algorithm. The space complexity is `O(|V|)`.
 
 However, the complexity of the Defi Arbitration model is dependent on the AMM protocol. In using Uniswap V3 as an example, the complexity of the Arbitration model is dependent on the number of token pairs in the Uniswap V3 protocol and for each token pair, all the edges between all other token `feeTier` in `n` liquidity pools. This poses a challenge in the implementation of the Arbitration model since our nodes and edges create cycles within the token pair node itself, and all other ERC20 token pairs that have at least one of the token in the cycle.
 
