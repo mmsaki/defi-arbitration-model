@@ -28,7 +28,7 @@ The arbitration model is based on the following:
 1. A graph `G = (V, E)` where `V` is the set of vertices and `E` is the set of edges.
 2. Each vertex `v` represents a token and each edge `(u, v)` represents a transaction from token `u` to token `v`.
 3. Each edge `(u, v)` has a weight `w(u, v)` which is the exchange rate from token `u` to token `v`.
-4. The goal is to find a path from a source vertex `s` to a destination vertex `t` such that the product of the weights of the edges in the path is greater than 1.
+4. The goal is to find a path from a source vertex `s_0` to a destination vertex `s_n` such that the product of the weights of the edges in the path is greater than 1.
 
 **Pre-requisite**
 
@@ -68,7 +68,7 @@ $log (a) < 0$ if $a < 1$, negative weight
 
 $\log (a \cdot b) = \log (a) + \log (b)$
 
-Logarithms convert multiplication into addition, making it easier to work with. In the arbitrage model, we use the sum of the logarithm of exchange rates. The problem of finding the path from `s` to `t` in a graph `G` such that the sum of the weights of the edges in the path is minimized is called the shortest path problem.
+Logarithms convert multiplication into addition, making it easier to work with. In the arbitrage model, we use the sum of the logarithm of exchange rates. The problem of finding the path from `s_0` to `s_n` in a graph `G` such that the sum of the weights of the edges in the path is minimized is called the shortest path problem.
 
 ## Shortest Path Problem
 
