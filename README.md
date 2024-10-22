@@ -150,7 +150,7 @@ forge test -vvv --match-contract=testPoC
 
 ## Improvements
 
-1. **Optimization**: The Arbitration model can be optimized by using a more efficient algorithm like the Floyd-Warshall algorithm
+1. **Optimization**: The Arbitration model can be optimized by using a more efficient.
 
 1. **Real-time monitoring**: The Arbitration model can be improved by using real-time data from the Defi protocol as each block has a different protocol arbitration state. The Arbitration model is dependent on the data from the Defi protocol. The data collection process can be automated using a low latency indexer
 
