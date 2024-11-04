@@ -14,3 +14,4 @@ docs/
 .env
 
 venv
+*.DS_Store
