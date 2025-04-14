@@ -2,16 +2,16 @@
 
 ![](./imgs/output3.png)
 
-1. [Intorduction](#introduction)
-1. [Shortest Path Problem](#Shortest-Path-Problem)
-1. [Bellman-Ford Algorithm](#Bellman-Ford-Algorithm)
-1. [Implementation](#Implementation)
-1. [Usage on Uniswap V3](#usage---uniswap-v3)
-1. [Results](#Results)
-1. [Complexity](#Complexity)
-1. [POC](#POC)
-1. [Improvements](#Improvements)
-1. [Resources Readings](#Resources-Readings)
+01. [Intorduction](#introduction)
+02. [Shortest Path Problem](#Shortest-Path-Problem)
+03. [Bellman-Ford Algorithm](#Bellman-Ford-Algorithm)
+04. [Implementation](#Implementation)
+05. [Usage on Uniswap V3](#usage---uniswap-v3)
+06. [Results](#Results)
+07. [Complexity](#Complexity)
+08. [POC](#POC)
+09. [Improvements](#Improvements)
+10. [Resources Readings](#Resources-Readings)
 
 ## Introduction
 
@@ -32,13 +32,13 @@ The arbitration model is based on the following:
 
 **Pre-requisite**
 
-|     | usd   | eur   | gbp   | chf   | cad   |
+| | usd | eur | gbp | chf | cad |
 | --- | ----- | ----- | ----- | ----- | ----- |
-| usd | 1     | 0.741 | 0.657 | 1.061 | 1.005 |
-| eur | 1.349 | 1     | 0.888 | 1.433 | 1.366 |
-| gbp | 1.521 | 1.126 | 1     | 1.614 | 1.538 |
-| chf | 0.942 | 0.698 | 0.619 | 1     | 0.953 |
-| cad | 0.995 | 0.732 | 0.650 |       | 1     |
+| usd | 1 | 0.741 | 0.657 | 1.061 | 1.005 |
+| eur | 1.349 | 1 | 0.888 | 1.433 | 1.366 |
+| gbp | 1.521 | 1.126 | 1 | 1.614 | 1.538 |
+| chf | 0.942 | 0.698 | 0.619 | 1 | 0.953 |
+| cad | 0.995 | 0.732 | 0.650 | | 1 |
 
 > The arbritation model is based on finding the product summation of exchange rates that is greater than 1. This is equivalent to finding the sum of the log of the exchange rates that is greater than 0.
 
@@ -48,15 +48,15 @@ $s0 = 10000 usd$
 
 usd -> eur -> cad -> usd
 
-$s1 = 10000 \cdot 0.741 \cdot 1.366 \cdot 0.995 = 10071 $
+$s1 = 10000 \\cdot 0.741 \\cdot 1.366 \\cdot 0.995 = 10071 $
 
 > You end up with 10071 usd at the end of the transaction, the question is how can we generate this path usd -> eur -> cad -> usd? It's hard to find this path manually by just looking at the table
 
 **Abritrage path with sum of log**
 
-$\log(0.741) + log(1.366) + log(0.995) = 0.00309$
+$\\log(0.741) + log(1.366) + log(0.995) = 0.00309$
 
-$10000 \cdot 10^{0.0039} = 10071$
+$10000 \\cdot 10^{0.0039} = 10071$
 
 > I just wanted to show the equivalence of the two methods. For the sake of the reader I only reference some log properties below but will not go further into the math, read [resources materials](#resources-readings) for detailed on the Arbritration problem.
 
@@ -66,7 +66,7 @@ $log (a) > 0$ if $a > 1$, positive weight
 
 $log (a) < 0$ if $a < 1$, negative weight
 
-$\log (a \cdot b) = \log (a) + \log (b)$
+$\\log (a \\cdot b) = \\log (a) + \\log (b)$
 
 Logarithms convert multiplication into addition, making it easier to work with. In the arbitrage model, we use the sum of the logarithm of exchange rates. The problem of finding the path from `s_0` to `s_n` in a graph `G` such that the sum of the weights of the edges in the path is minimized is called the shortest path problem.
 
@@ -127,24 +127,25 @@ The Proof of Concept (POC) is implemented in Python. The implementation is based
    pip install -r requirements.txt
    ```
 
-1. Add `api_key` to `.env` file, see [thegrah](https://thegraph.com/) for more information
+2. Add `api_key` to `.env` file, see [thegrah](https://thegraph.com/) for more information
 
    ```bash
    cp .env.example .env
    ```
 
-1. Open the [`arb.ipynb`](./arb.ipynb) notebook and run the cells
+3. Open the [`arb.ipynb`](./arb.ipynb) notebook and run the cells
 
 **Foundry**
 
 Tests are implemented in the `tests` directory. The tests can be run using the following command:
 
 ```bash
-# I forgot the block number I found this arbitrage, test will fail unless I update fork block number
-# vm.createSelectFork("mainnet", 17289404);
-# Screenshot of test I ran below
+# found this arbitrage on Oct 15 2024
+# vm.createSelectFork("mainnet", 20970507);
 forge test -vvv --match-contract=testPoC
 ```
+
+Test results
 
 ![](./imgs/SCR-20241014-nmav.png)
 
@@ -152,17 +153,17 @@ forge test -vvv --match-contract=testPoC
 
 1. **Optimization**: The Arbitration model can be optimized by using a more efficient.
 
-1. **Real-time monitoring**: The Arbitration model can be improved by using real-time data from the Defi protocol as each block has a different protocol arbitration state. The Arbitration model is dependent on the data from the Defi protocol. The data collection process can be automated using a low latency indexer
+2. **Real-time monitoring**: The Arbitration model can be improved by using real-time data from the Defi protocol as each block has a different protocol arbitration state. The Arbitration model is dependent on the data from the Defi protocol. The data collection process can be automated using a low latency indexer
 
-1. **Node Complexity**: the Arbitration model can be improved by reducing the complexity of the Defi protocol graph with different feeTiers and liquidity pools. Since Uniswap V4 has dymanic feeTiers for liquidity pools we will need to use a simpler graph representation for ERC20 token pairs and update our weight function to include the feeTier.
+3. **Node Complexity**: the Arbitration model can be improved by reducing the complexity of the Defi protocol graph with different feeTiers and liquidity pools. Since Uniswap V4 has dymanic feeTiers for liquidity pools we will need to use a simpler graph representation for ERC20 token pairs and update our weight function to include the feeTier.
 
    > Currently with 1000 Uniswap V3 pools our graph looks like this. The center is WETH 3000 feeTier as the most used token pair in V3. The graph is too complex to visualize and the cycles are hard to find. We need to simplify the graph representation or prune unecessary nodes.
 
    ![](./imgs/output6.png)
 
-1. **Transaction Execution**: The Arbitration model can be improved by automating executing the transaction on the Defi protocol by generating transaction parameterss
+4. **Transaction Execution**: The Arbitration model can be improved by automating executing the transaction on the Defi protocol by generating transaction parameterss
 
-1. **Integration**: The Arbitration model can be integrated with other Defi protocols to find arbitrage opportunities. In order to scale this the Arbitration model will eventualy need to be independent of the protocol and be interoperable with other Defi protocols e.g. Uniwap V2, Balancer, Curve, Crosschain Protocols like Accross etc.
+5. **Integration**: The Arbitration model can be integrated with other Defi protocols to find arbitrage opportunities. In order to scale this the Arbitration model will eventualy need to be independent of the protocol and be interoperable with other Defi protocols e.g. Uniwap V2, Balancer, Curve, Crosschain Protocols like Accross etc.
 
 ## Resources Readings
 

@@ -16,14 +16,13 @@ address constant ust = 0xa47c8bf37f92aBed4A126BDA807A7b7498661acD; // UST
 address constant crv = 0xD533a949740bb3306d119CC777fa900bA034cd52; // crv
 address constant glm = 0x7DD9c5Cba05E151C895FDe1CF355C9A1D5DA6429; // glm
 
-
 contract ARB_Defi is Test {
     address user = makeAddr("the arbitrator");
     Arbitrator arbitrator;
 
     function setUp() public {
-        vm.createSelectFork("mainnet");
-        
+        vm.createSelectFork("mainnet", 20970507);
+
         vm.label(weth, "weth");
         vm.label(dai, "dai");
         vm.label(usdc, "usdc");
@@ -34,14 +33,14 @@ contract ARB_Defi is Test {
     }
 
     function testPoC() public {
-        console.log('Previous balance in WETH :', Interface(weth).balanceOf(user));
-        console.log(block.timestamp);
+        console.log("Previous balance in WETH :", Interface(weth).balanceOf(user));
+        console.log(block.number);
 
         vm.startPrank(user);
         arbitrator = new Arbitrator();
         arbitrator.aribitrate();
 
-        console.log('3. Final balance in WETH :', Interface(weth).balanceOf(user));
+        console.log("3. Final balance in WETH :", Interface(weth).balanceOf(user));
     }
 }
 
@@ -50,14 +49,13 @@ contract Arbitrator {
 
     address token_1 = weth;
     address token_2 = glm;
-    uint24 fee_1 = 10000;  
-    uint24 fee_2 = 3000; 
+    uint24 fee_1 = 10000;
+    uint24 fee_2 = 3000;
     uint24 fee_3 = 3000;
-
 
     function aribitrate() external {
         txSender = msg.sender;
-        
+
         uint256 amount_1 = 1000000000000000;
         Interface(token_1).approve(uniV3Router, amount_1);
         Interface(token_2).approve(uniV3Router, type(uint256).max);
@@ -66,12 +64,7 @@ contract Arbitrator {
         tokens[0] = token_1;
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = amount_1;
-        Interface(balancerVault).flashLoan(
-            address(this),
-            tokens,
-            amounts,
-            ""
-        );
+        Interface(balancerVault).flashLoan(address(this), tokens, amounts, "");
     }
 
     function receiveFlashLoan(
@@ -80,11 +73,12 @@ contract Arbitrator {
         uint256[] memory feeAmounts,
         bytes memory userData
     ) external {
-    
         uint256 bal_1 = Interface(token_1).balanceOf(address(this));
         console.log("0. Received flashloan token_1", bal_1);
 
-        /******** 1nd swap ***************/
+        /**
+         * 1nd swap **************
+         */
         Interface.ExactInputSingleParams memory input = Interface.ExactInputSingleParams(
             token_1, // address tokenIn;
             token_2, // address tokenOut;
@@ -96,11 +90,12 @@ contract Arbitrator {
             0 // uint160 sqrtPriceLimitX96;
         );
         Interface(uniV3Router).exactInputSingle(input);
-        uint bal_2 = Interface(token_2).balanceOf(address(this));
+        uint256 bal_2 = Interface(token_2).balanceOf(address(this));
         console.log("1.1 Bought", token_2, bal_2);
 
-
-        /******** 2nd swap ***************/
+        /**
+         * 2nd swap **************
+         */
         input = Interface.ExactInputSingleParams(
             token_2, // address tokenIn;
             token_1, // address tokenOut;
@@ -112,7 +107,7 @@ contract Arbitrator {
             0 // uint160 sqrtPriceLimitX96;
         );
         Interface(uniV3Router).exactInputSingle(input);
-        uint bal_3 = Interface(token_1).balanceOf(address(this));
+        uint256 bal_3 = Interface(token_1).balanceOf(address(this));
         console.log("1.2 Sold", token_2, bal_3);
 
         console.log("2.0 WETH Balance", Interface(token_1).balanceOf(address(this)));
@@ -129,15 +124,11 @@ contract Arbitrator {
 
 interface Interface is IERC20 {
     // balancerVault
-    function flashLoan(
-        address recipient,
-        address[] memory tokens,
-        uint256[] memory amounts,
-        bytes memory userData
-    ) external;
+    function flashLoan(address recipient, address[] memory tokens, uint256[] memory amounts, bytes memory userData)
+        external;
 
     // WETH
-    function withdraw(uint wad) external;
+    function withdraw(uint256 wad) external;
 
     // Uniswap V3: SwapRouter
     struct ExactInputSingleParams {
@@ -153,3 +144,4 @@ interface Interface is IERC20 {
 
     function exactInputSingle(ExactInputSingleParams calldata params) external payable returns (uint256 amountOut);
 }
+
