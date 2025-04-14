@@ -13,5 +13,7 @@ docs/
 # Dotenv file
 .env
 
+# py
 venv
 *.DS_Store
+.ipynb_checkpoints/
